@@ -44,7 +44,6 @@ void ATank::SetupPlayerInputComponent(UInputComponent * PlayerInputComponent)
 	//ETriggerEvent is an enum, where Triggered means "button is held down".
 	playerEIcomponent->BindAction(inputMoveForward, ETriggerEvent::Triggered, this, &ATank::Move);
     playerEIcomponent->BindAction(inputTurn, ETriggerEvent::Triggered, this, &ATank::Turn);
-    //playerEIcomponent->BindAction(inputRotateTurret, ETriggerEvent::Triggered, this, &ATank::RotateTurret);
     playerEIcomponent->BindAction(inputFire, ETriggerEvent::Triggered, this, &ATank::Fire);
 
 }
@@ -55,17 +54,6 @@ void ATank::BeginPlay()
 	Super::BeginPlay();
 
     TankPlayerController = Cast<APlayerController>(GetController());
-
-    /*
-    DrawDebugSphere(
-        GetWorld(),
-        GetActorLocation() + FVector(0.f, 0.f, 200.f),
-        100.f,
-        12,
-        FColor::Red,
-        true,
-        30.f);
-    */
 	
 }
 
@@ -81,16 +69,6 @@ void ATank::Tick(float DeltaTime)
             ECollisionChannel::ECC_Visibility,
             false,
             HitResult);
-
-    /*
-    DrawDebugSphere(
-        GetWorld(),
-        HitResult.ImpactPoint,
-        25.f,
-        12,
-        FColor::Red,
-        false);
-    */
 
         RotateTurret(HitResult.ImpactPoint);
     
@@ -126,11 +104,3 @@ void ATank::Turn(const FInputActionValue & Value)
     UE_LOG(LogTemp, Display, TEXT("Float value: %f"), Value.Get<float>());
 
 }
-
-
-/*
-void ATank::Fire(const FInputActionValue & Value)
-{
-    UE_LOG(LogTemp, Display, TEXT("Float value: %s"), Value.Get<bool>());s
-}
-*/

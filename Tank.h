@@ -49,8 +49,6 @@ private:
 
 	void Move(const FInputActionValue & Value);
 	void Turn(const FInputActionValue & Value);
-	//void RotateTurret(const FInputActionValue & Value);
-	//void Fire(const FInputActionValue & Value);
 
 		//Setting up inputs. Mapping context and Input Action variables, to be set in Blueprint
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Enhanced Input", meta = (AllowPrivateAccess = "true"))
